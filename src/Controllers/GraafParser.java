@@ -6,23 +6,29 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+
+import Factorys.NodeFactory;
 
 public class GraafParser {
 
-	private ArrayList<String> input;
+	private List<String> input;
 
-	public GraafParser(String path) throws FileNotFoundException, IOException {
+	public GraafParser(String path) {
 		input = new ArrayList<String>();
-		// TODO process lines
-		try (BufferedReader br = new BufferedReader(new FileReader(new File(path)))) {
+
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(new File(path)));
 			String line;
 			while ((line = br.readLine()) != null) {
 				input.add(line);
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
-	public ArrayList<String> getInput() {
+	public List<String> getInput() {
 		return input;
 	}
 }

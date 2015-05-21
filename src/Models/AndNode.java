@@ -1,7 +1,6 @@
 package Models;
 
-public class OrNode implements BaseNode{
-	
+public class AndNode implements BaseNode {
 	public void work(){
 		
 	}
