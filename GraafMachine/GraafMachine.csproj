@@ -50,6 +50,7 @@
     <Compile Include="Models\NandNode.cs" />
     <Compile Include="Models\NotNode.cs" />
     <Compile Include="Models\OrNode.cs" />
+    <Compile Include="Models\ProbeNode.cs" />
     <Compile Include="Models\XorNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
