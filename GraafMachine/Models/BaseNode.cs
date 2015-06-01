@@ -23,6 +23,11 @@ namespace GraafMachine.Models
             return Factory.FactoryMethod<String, BaseNode>.create(name);
         }
 
+        public void addOutputNode(BaseNode node)
+        {
+            outputNodes.Add(node);
+        }
+
         public void addInput(bool input)
         {
             inputs[inputs.Count()] = input;
