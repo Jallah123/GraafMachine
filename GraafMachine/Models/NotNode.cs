@@ -8,6 +8,11 @@ namespace GraafMachine.Models
 {
     class NotNode : BaseNode
     {
+        public NotNode()
+        {
+            inputs = new bool[1];
+        }
+
         public override void work()
         {
             Console.WriteLine("Yeay i am a !=-node");

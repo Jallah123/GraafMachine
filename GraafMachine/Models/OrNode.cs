@@ -8,6 +8,11 @@ namespace GraafMachine.Models
 {
     class OrNode: BaseNode
     {
+        public OrNode()
+        {
+            inputs = new bool[2];
+        }
+
         public override void work()
         {
             Console.WriteLine("I am a ||-node");

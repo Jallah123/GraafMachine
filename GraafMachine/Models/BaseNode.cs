@@ -26,10 +26,12 @@ namespace GraafMachine.Models
         public void addOutputNode(BaseNode node)
         {
             outputNodes.Add(node);
+            Console.WriteLine(this.name + ":" + node.name);
         }
 
         public void addInput(bool input)
         {
+            Console.WriteLine("Name : " + input);
             inputs[inputs.Count()] = input;
         }
 

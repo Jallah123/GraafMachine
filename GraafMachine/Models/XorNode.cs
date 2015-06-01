@@ -8,6 +8,11 @@ namespace GraafMachine.Models
 {
     class XorNode: BaseNode
     {
+        public XorNode()
+        {
+            inputs = new bool[2];
+        }
+
         public override void work()
         {
             Console.WriteLine("Yeay i am a xor-node");

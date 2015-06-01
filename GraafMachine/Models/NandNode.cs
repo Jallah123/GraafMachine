@@ -8,6 +8,11 @@ namespace GraafMachine.Models
 {
     class NandNode: BaseNode
     {
+        public NandNode()
+        {
+            inputs = new bool[2];
+        }
+
         public override void work()
         {
             Console.WriteLine("Yeay i am a Nandnode");

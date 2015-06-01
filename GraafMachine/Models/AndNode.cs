@@ -8,9 +8,20 @@ namespace GraafMachine.Models
 {
     class AndNode: BaseNode
     {
+        public AndNode()
+        {
+            inputs = new bool[2];
+        }
+
         public override void work()
         {
-            Console.WriteLine("Yeay i am a &-node");
+            if(inputs.Length == 2)
+            {
+                foreach(BaseNode node in outputNodes)
+                {
+                    node.addInput((inputs[0] && inputs[1]));
+                }
+            }
         }
 
         public override object Clone()
