@@ -33,6 +33,11 @@ namespace GraafMachine.Models
             this.name = name;
         }
 
+        public string getName()
+        {
+            return name;
+        }
+
         public abstract string getKey();
         public abstract object Clone();
         public abstract void work();

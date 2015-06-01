@@ -27,10 +27,11 @@ namespace GraafMachine.Controllers
                     if (!line.Contains("#") && line != "")
                     {
                         // Add line to list
-                        
+                        // Remove all whitespace and not-used characters
                         lines.Add(line.Replace("\t", "").Replace(" ", "").Replace(";", ""));
                     }
                 }
+                // Close file
                 file.Close();
             }
             catch (Exception e)

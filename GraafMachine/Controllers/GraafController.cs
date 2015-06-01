@@ -14,6 +14,7 @@ namespace GraafMachine.Controllers
         {
             nodes = new List<BaseNode>();
             // Make parser
+            // Create folder in the bin directory called "circuits" and add circuits there
             GraafParser parser = new GraafParser(@"circuits/circuit1.txt");
             generateNodes(parser.getLines());
 
@@ -23,22 +24,51 @@ namespace GraafMachine.Controllers
         {
             // Loop through all lines
             foreach(String line in lines) {
-                try
+                // lineSplit[0] is the name of the node
+                // lineSplit[1] is the node type
+                string[] lineSplit = line.Split(':');
+                string nodeName = lineSplit[0];
+                string nodeType = lineSplit[1];
+                bool exists = checkExistence(nodeName);
+                if (exists)
                 {
-                    string[] lineSplit = line.Split(':');
-                    BaseNode node = BaseNode.create(lineSplit[1]);
-                    node.setName(lineSplit[0]);
-                    nodes.Add(node);
-                }
-                catch (Exception e)
+                    // Create link
+                } else
                 {
-                    Console.WriteLine("error generating" + e.GetBaseException());
+                    createNode(nodeName, nodeType);
                 }
             }
 
             foreach(BaseNode node in nodes)
             {
                 node.work();
+            }
+        }
+
+        private bool checkExistence(string name)
+        {
+            foreach (BaseNode node in nodes)
+            {
+                if (node.getName().Equals(name))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private void createNode(string name, string type)
+        {
+            try
+            {
+                BaseNode node = BaseNode.create(type);
+                // Set name and add to list
+                node.setName(name);
+                nodes.Add(node);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error generating node type: {0}. With name : {1}.", type, name);
             }
         }
 

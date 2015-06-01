@@ -11,7 +11,6 @@ namespace GraafMachine
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("test");
             GraafController controller = new GraafController();
             Console.Read();
         }
