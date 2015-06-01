@@ -24,18 +24,19 @@ namespace GraafMachine.Controllers
         {
             // Loop through all lines
             foreach(String line in lines) {
-                // lineSplit[0] is the name of the node
-                // lineSplit[1] is the node type
+
                 string[] lineSplit = line.Split(':');
                 string nodeName = lineSplit[0];
                 string nodeType = lineSplit[1];
+
                 bool exists = checkExistence(nodeName);
+
                 if (exists)
                 {
                     // Create link
                 } else
                 {
-                    createNode(nodeName, nodeType);
+                    nodes.Add(createNode(nodeName, nodeType));
                 }
             }
 
@@ -57,14 +58,14 @@ namespace GraafMachine.Controllers
             return false;
         }
 
-        private void createNode(string name, string type)
+        private BaseNode createNode(string name, string type)
         {
             try
             {
                 BaseNode node = BaseNode.create(type);
                 // Set name and add to list
                 node.setName(name);
-                nodes.Add(node);
+                return node;
             }
             catch (Exception e)
             {
