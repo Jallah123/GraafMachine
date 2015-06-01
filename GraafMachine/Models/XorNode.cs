@@ -20,7 +20,7 @@ namespace GraafMachine.Models
 
         public override string getKey()
         {
-            return "xor";
+            return "XOR";
         }
     }
 }

@@ -24,11 +24,11 @@ namespace GraafMachine.Controllers
                 while((line = file.ReadLine()) != null)
                 {
                     // Check if line is a comment or empty
-                    if (!line.Contains("#") || line == "")
+                    if (!line.Contains("#") && line != "")
                     {
                         // Add line to list
                         
-                        lines.Add(line.Replace("\t", "").Replace(" ", ""));
+                        lines.Add(line.Replace("\t", "").Replace(" ", "").Replace(";", ""));
                     }
                 }
                 file.Close();

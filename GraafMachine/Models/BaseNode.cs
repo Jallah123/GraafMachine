@@ -28,6 +28,11 @@ namespace GraafMachine.Models
             inputs[inputs.Count()] = input;
         }
 
+        public void setName(string name)
+        {
+            this.name = name;
+        }
+
         public abstract string getKey();
         public abstract object Clone();
         public abstract void work();
