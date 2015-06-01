@@ -9,10 +9,12 @@ namespace GraafMachine.Controllers
 {
     class GraafController
     {
+        private Dictionary<String, BaseNode> nodes;
         public GraafController()
         {
+            nodes = new Dictionary<string, BaseNode>();
             // Make parser
-            GraafParser parser = new GraafParser("c:\\tmp\\graaf.txt");
+            GraafParser parser = new GraafParser(@"circuits/circuit1.txt");
             generateNodes(parser.getLines());
 
         }
@@ -27,7 +29,7 @@ namespace GraafMachine.Controllers
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("error generating");
+                    Console.WriteLine("error generating" + e.GetBaseException());
                 }
             }
         }
