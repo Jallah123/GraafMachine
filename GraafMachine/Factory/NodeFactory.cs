@@ -95,8 +95,7 @@ namespace Factory
 
             return default(TObject);
         }
-
-        private Dictionary<TKey, TObject> m_caObjectMap;
+                private Dictionary<TKey, TObject> m_caObjectMap;
         static private FactoryMethod<TKey, TObject> m_cInstance = null;
     }
 
