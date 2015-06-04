@@ -10,12 +10,14 @@ namespace GraafMachine.Models
     {
         public ProbeNode()
         {
-            inputs = new bool[1];
+            inputs = new List<bool>(1);
         }
 
         public override void work()
         {
-            Console.WriteLine(name + ":" + inputs[0]);
+            if (inputs.Count() == 1) { 
+                Console.WriteLine(name + ":" + inputs[0]);
+            }
         }
 
         public override object Clone()

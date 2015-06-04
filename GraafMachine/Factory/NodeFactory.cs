@@ -1,6 +1,4 @@
-﻿// met dank aan Roel van Uden
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
 

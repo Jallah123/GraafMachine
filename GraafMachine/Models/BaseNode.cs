@@ -10,7 +10,7 @@ namespace GraafMachine.Models
     public abstract class BaseNode: ICloneable, IGetKey<String>
     {
         protected List<BaseNode> outputNodes;
-        protected bool[] inputs;
+        protected List<bool> inputs;
         protected string name;
 
         protected BaseNode()
@@ -26,13 +26,16 @@ namespace GraafMachine.Models
         public void addOutputNode(BaseNode node)
         {
             outputNodes.Add(node);
-            Console.WriteLine(this.name + ":" + node.name);
+        //    Console.WriteLine(this.name + ":" + node.name);
         }
 
         public void addInput(bool input)
         {
-            Console.WriteLine("Name : " + input);
-            inputs[inputs.Count()] = input;
+            //     Console.WriteLine("Name : " + input);
+            //int count = inputs.Count();
+            //inputs[count-1] = input;
+            inputs.Add(input);
+            work();
         }
 
         public void setName(string name)

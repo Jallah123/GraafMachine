@@ -47,6 +47,8 @@
     <Compile Include="Factory\NodeFactory.cs" />
     <Compile Include="Models\AndNode.cs" />
     <Compile Include="Models\BaseNode.cs" />
+    <Compile Include="Models\InputHighNode.cs" />
+    <Compile Include="Models\InputLowNode.cs" />
     <Compile Include="Models\NandNode.cs" />
     <Compile Include="Models\NotNode.cs" />
     <Compile Include="Models\OrNode.cs" />

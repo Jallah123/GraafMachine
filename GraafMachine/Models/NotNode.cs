@@ -10,12 +10,18 @@ namespace GraafMachine.Models
     {
         public NotNode()
         {
-            inputs = new bool[1];
+            inputs = new List<bool>(1);
         }
 
         public override void work()
         {
-            Console.WriteLine("Yeay i am a !=-node");
+            if (inputs.Count() == 1)
+            {
+                foreach (BaseNode node in outputNodes)
+                {
+                    node.addInput(!inputs[0]);
+                }
+            }
         }
 
         public override object Clone()

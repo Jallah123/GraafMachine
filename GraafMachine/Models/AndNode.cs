@@ -10,12 +10,12 @@ namespace GraafMachine.Models
     {
         public AndNode()
         {
-            inputs = new bool[2];
+            inputs = new List<bool>(2);
         }
 
         public override void work()
         {
-            if(inputs.Length == 2)
+            if(inputs.Count() == 2)
             {
                 foreach(BaseNode node in outputNodes)
                 {

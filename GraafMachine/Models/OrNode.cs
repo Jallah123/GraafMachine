@@ -10,12 +10,18 @@ namespace GraafMachine.Models
     {
         public OrNode()
         {
-            inputs = new bool[2];
+            inputs = new List<bool>(2);
         }
 
         public override void work()
         {
-            Console.WriteLine("I am a ||-node");
+            if (inputs.Count() == 2)
+            {
+                foreach (BaseNode node in outputNodes)
+                {
+                    node.addInput((inputs[0] || inputs[1]));
+                }
+            }
         }
         public override object Clone()
         {

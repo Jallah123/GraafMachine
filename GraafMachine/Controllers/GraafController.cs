@@ -15,9 +15,9 @@ namespace GraafMachine.Controllers
             nodes = new List<BaseNode>();
             // Make parser
             // Create folder in the bin directory called "circuits" and add circuits there
-            GraafParser parser = new GraafParser(@"circuits/circuit1.txt");
+            GraafParser parser = new GraafParser(@"circuits/circuit2.txt");
             generateNodes(parser.getLines());
-
+            work();
         }
 
         private void generateNodes(List<String> lines)
@@ -48,13 +48,17 @@ namespace GraafMachine.Controllers
                     }
                 }
             }
-
-            foreach(BaseNode node in nodes)
+        }
+        private void work()
+        {
+            foreach (BaseNode node in nodes)
             {
-                node.work();
+                if (node.getKey().Equals("INPUT_HIGH") || node.getKey().Equals("INPUT_LOW"))
+                {
+                    node.work();
+                }
             }
         }
-
         private BaseNode createNode(string name, string type)
         {
             BaseNode node = BaseNode.create(type);
