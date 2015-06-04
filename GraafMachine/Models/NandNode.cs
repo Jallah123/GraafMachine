@@ -8,9 +8,20 @@ namespace GraafMachine.Models
 {
     class NandNode: BaseNode
     {
+        public NandNode()
+        {
+            inputs = new List<bool>(2);
+        }
+
         public override void work()
         {
-            Console.WriteLine("Yeay i am a Nandnode");
+            if (inputs.Count() == 2)
+            {
+                foreach (BaseNode node in outputNodes)
+                {
+                    node.addInput((!inputs[0] || !inputs[1]));
+                }
+            }
         }
 
         public override object Clone()
@@ -20,7 +31,7 @@ namespace GraafMachine.Models
 
         public override string getKey()
         {
-            return "nand";
+            return "NAND";
         }
     }
 }

@@ -6,31 +6,28 @@ using System.Threading.Tasks;
 
 namespace GraafMachine.Models
 {
-    class OrNode: BaseNode
+    class ProbeNode: BaseNode
     {
-        public OrNode()
+        public ProbeNode()
         {
-            inputs = new List<bool>(2);
+            inputs = new List<bool>(1);
         }
 
         public override void work()
         {
-            if (inputs.Count() == 2)
-            {
-                foreach (BaseNode node in outputNodes)
-                {
-                    node.addInput((inputs[0] || inputs[1]));
-                }
+            if (inputs.Count() == 1) { 
+                Console.WriteLine(name + ":" + inputs[0]);
             }
         }
+
         public override object Clone()
         {
-            return new OrNode();
+            return new ProbeNode();
         }
 
         public override string getKey()
         {
-            return "OR";
+            return "PROBE";
         }
     }
 }

@@ -8,11 +8,20 @@ namespace GraafMachine.Models
 {
     class XorNode: BaseNode
     {
-        public override void work()
+        public XorNode()
         {
-            Console.WriteLine("Yeay i am a xor-node");
+            inputs = new List<bool>(2);
         }
 
+        public override void work()
+        {
+            if (inputs.Count() == 2) {
+                foreach (BaseNode node in outputNodes)
+                {
+                    node.addInput((inputs[0] ^ inputs[1]));
+                }
+            }
+        }
         public override object Clone()
         {
             return new XorNode();
@@ -20,7 +29,7 @@ namespace GraafMachine.Models
 
         public override string getKey()
         {
-            return "xor";
+            return "XOR";
         }
     }
 }

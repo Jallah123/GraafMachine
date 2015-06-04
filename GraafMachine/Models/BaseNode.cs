@@ -9,12 +9,43 @@ namespace GraafMachine.Models
 {
     public abstract class BaseNode: ICloneable, IGetKey<String>
     {
+        protected List<BaseNode> outputNodes;
+        protected List<bool> inputs;
+        protected string name;
+
         protected BaseNode()
         {
+            outputNodes = new List<BaseNode>();
         }
+
         public static BaseNode create(String name)
         {
             return Factory.FactoryMethod<String, BaseNode>.create(name);
+        }
+
+        public void addOutputNode(BaseNode node)
+        {
+            outputNodes.Add(node);
+        //    Console.WriteLine(this.name + ":" + node.name);
+        }
+
+        public void addInput(bool input)
+        {
+            //     Console.WriteLine("Name : " + input);
+            //int count = inputs.Count();
+            //inputs[count-1] = input;
+            inputs.Add(input);
+            work();
+        }
+
+        public void setName(string name)
+        {
+            this.name = name;
+        }
+
+        public string getName()
+        {
+            return name;
         }
 
         public abstract string getKey();

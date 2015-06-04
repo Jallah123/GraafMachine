@@ -8,9 +8,20 @@ namespace GraafMachine.Models
 {
     class NotNode : BaseNode
     {
+        public NotNode()
+        {
+            inputs = new List<bool>(1);
+        }
+
         public override void work()
         {
-            Console.WriteLine("Yeay i am a !=-node");
+            if (inputs.Count() == 1)
+            {
+                foreach (BaseNode node in outputNodes)
+                {
+                    node.addInput(!inputs[0]);
+                }
+            }
         }
 
         public override object Clone()
@@ -20,7 +31,7 @@ namespace GraafMachine.Models
 
         public override string getKey()
         {
-            return "not";
+            return "NOT";
         }
     }
 }
