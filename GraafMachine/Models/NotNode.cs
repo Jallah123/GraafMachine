@@ -17,9 +17,11 @@ namespace GraafMachine.Models
         {
             if (inputs.Count() == 1)
             {
+                output = !inputs[0];
+                notifyObservers(output);
                 foreach (BaseNode node in outputNodes)
                 {
-                    node.addInput(!inputs[0]);
+                    node.addInput(output);
                 }
             }
         }

@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using GraafMachine.Controllers;
 
 namespace GraafMachine.Models
 {
-    class ProbeNode: BaseNode
+    public class ProbeNode: BaseNode
     {
+        
         public ProbeNode()
         {
             inputs = new List<bool>(1);
@@ -15,8 +15,8 @@ namespace GraafMachine.Models
 
         public override void work()
         {
-            if (inputs.Count() == 1) { 
-                Console.WriteLine(name + ":" + inputs[0]);
+            if (inputs.Count() == 1) {
+                notifyObservers(inputs[0]);
             }
         }
 
