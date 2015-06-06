@@ -1,4 +1,5 @@
 ﻿using GraafMachine.Models;
+using GraafMachine.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GraafMachine.Controllers
 {
-    class GraafController
+    public class GraafController
     {
         private List<BaseNode> nodes;
         public GraafController()
@@ -15,7 +16,7 @@ namespace GraafMachine.Controllers
             nodes = new List<BaseNode>();
             // Make parser
             // Create folder in the bin directory called "circuits" and add circuits there
-            GraafParser parser = new GraafParser(@"circuits/circuit2.txt");
+            GraafParser parser = new GraafParser(@"circuits/circuit3.txt");
             generateNodes(parser.getLines());
             work();
         }
@@ -64,6 +65,7 @@ namespace GraafMachine.Controllers
             BaseNode node = BaseNode.create(type);
             // Set name and add to list
             node.setName(name);
+            node.Subscribe(this);
             return node;
         }
 
@@ -92,6 +94,11 @@ namespace GraafMachine.Controllers
                 }
             }
             return null;
+        }
+
+        public void printOutput(BaseNode value, bool output)
+        {
+            ResultView.getInstance().printNodeInfo(value, output);
         }
     }
 }

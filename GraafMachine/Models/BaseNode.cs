@@ -1,4 +1,5 @@
 ﻿using Factory;
+using GraafMachine.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,12 @@ namespace GraafMachine.Models
         protected List<BaseNode> outputNodes;
         protected List<bool> inputs;
         protected string name;
+        protected List<GraafController> observers;
+        protected bool output;
 
         protected BaseNode()
         {
+            observers = new List<GraafController>();
             outputNodes = new List<BaseNode>();
         }
 
@@ -26,14 +30,10 @@ namespace GraafMachine.Models
         public void addOutputNode(BaseNode node)
         {
             outputNodes.Add(node);
-        //    Console.WriteLine(this.name + ":" + node.name);
         }
 
         public void addInput(bool input)
         {
-            //     Console.WriteLine("Name : " + input);
-            //int count = inputs.Count();
-            //inputs[count-1] = input;
             inputs.Add(input);
             work();
         }
@@ -48,9 +48,27 @@ namespace GraafMachine.Models
             return name;
         }
 
+        public List<bool> getInputs()
+        {
+            return inputs;
+        }
+
         public abstract string getKey();
         public abstract object Clone();
         public abstract void work();
+
+        public void notifyObservers(bool output)
+        {
+            foreach (GraafController g in observers)
+            {
+                g.printOutput(this, output);
+            }
+        }
+        public void Subscribe(GraafController observer)
+        {
+            observers.Add(observer);
+           
+        }
     }
 }
 
