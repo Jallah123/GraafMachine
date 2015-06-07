@@ -13,7 +13,9 @@ namespace GraafMachine.Views
 
         private ResultView()
         {
-            
+            printArt();
+            Console.WriteLine("Name\tType\tIN\t\tOUT");
+            Console.WriteLine("--------------------------------------");
         }
         public void print(String input)
         {
@@ -21,7 +23,15 @@ namespace GraafMachine.Views
         }
         public void printNodeInfo(BaseNode node, bool output)
         {
-            Console.WriteLine("{0}: {1}", node.getName(), output);
+            Console.Write("{0}\t{1}\t", node.getName(), node.getKey());
+            foreach (bool b in node.getInputs()){ 
+                Console.Write("{0}\t", b);
+            }
+            if (node.getInputs().Count ==1) {
+                Console.Write("\t{0}\n", output);
+            }else {
+                Console.Write("{0}\n", output);
+            }
         }
         public static ResultView getInstance()
         {
@@ -30,6 +40,14 @@ namespace GraafMachine.Views
                 instance = new ResultView();
             }
             return instance;
+        }
+
+        private void printArt()
+        {
+            Console.WriteLine(" __ _  _  _  __    _  __   ___    __");
+            Console.WriteLine("/__|_)|_||_||_ |V||_|/  |_| | |\\||_ ");
+            Console.WriteLine("\\_|| \\| || ||  | || |\\__| |_|_| ||__");
+            Console.WriteLine();
         }
     }
 }

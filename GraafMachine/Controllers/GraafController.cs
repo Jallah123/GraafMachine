@@ -16,7 +16,7 @@ namespace GraafMachine.Controllers
             nodes = new List<BaseNode>();
             // Make parser
             // Create folder in the bin directory called "circuits" and add circuits there
-            GraafParser parser = new GraafParser(@"circuits/circuit3.txt");
+            GraafParser parser = new GraafParser(@"circuits/circuit1.txt");
             generateNodes(parser.getLines());
             work();
         }
