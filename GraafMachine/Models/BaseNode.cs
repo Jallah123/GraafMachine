@@ -34,7 +34,14 @@ namespace GraafMachine.Models
 
         public void addInput(bool input)
         {
-            inputs.Add(input);
+            if (inputs.Capacity == inputs.Count)
+            {
+                throw new Exception("Too many inputs.");
+            }
+            else
+            {
+                inputs.Add(input);
+            }
             work();
         }
 

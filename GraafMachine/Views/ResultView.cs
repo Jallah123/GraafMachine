@@ -13,9 +13,7 @@ namespace GraafMachine.Views
 
         private ResultView()
         {
-            printArt();
-            Console.WriteLine("Name\tType\tIN\t\tOUT");
-            Console.WriteLine("--------------------------------------");
+
         }
         public void print(String input)
         {
@@ -42,12 +40,15 @@ namespace GraafMachine.Views
             return instance;
         }
 
-        private void printArt()
+        public void printArt()
         {
+            Console.WriteLine();
             Console.WriteLine(" __ _  _  _  __    _  __   ___    __");
             Console.WriteLine("/__|_)|_||_||_ |V||_|/  |_| | |\\||_ ");
             Console.WriteLine("\\_|| \\| || ||  | || |\\__| |_|_| ||__");
             Console.WriteLine();
+            Console.WriteLine("Name\tType\tIN\t\tOUT");
+            Console.WriteLine("--------------------------------------");
         }
     }
 }

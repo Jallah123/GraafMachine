@@ -15,10 +15,16 @@ namespace GraafMachine.Controllers
         {
             nodes = new List<BaseNode>();
             // Make parser
-            // Create folder in the bin directory called "circuits" and add circuits there
-            GraafParser parser = new GraafParser(@"circuits/circuit1.txt");
+            GraafParser parser = new GraafParser(getFileName());
+            ResultView.getInstance().printArt();
             generateNodes(parser.getLines());
             work();
+        }
+
+        private string getFileName()
+        {
+            ResultView.getInstance().print("Please enter circuit name:");
+            return Console.ReadLine();
         }
 
         private void generateNodes(List<String> lines)
